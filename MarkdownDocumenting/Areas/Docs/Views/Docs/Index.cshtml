@@ -1,0 +1,38 @@
+﻿
+@model string
+@{
+    Layout = MarkdownDocumenting.Configuration.Layout;
+}
+@using Westwind.AspNetCore.Markdown;
+
+
+@if (Model != null)
+{
+    @Markdown.ParseHtmlString(Model);
+}
+else
+{
+    <h2>Welcome Documenting</h2>
+
+    <hr />
+
+    <p>Vel dolor dolores magna molestie vero at et sit takimata dolor clita lorem sed at magna lorem magna no labore possim magna sea amet takimata sadipscing dolore at stet no at sit consetetur labore justo at vero blandit amet in sed magna at vero at dolor clita invidunt soluta vel dolor et lorem in vero feugiat et facer facilisi stet in amet takimata tempor et tincidunt et kasd nonummy ea vero aliquyam est dolor sadipscing</p>
+    <p>Vel dolor dolores magna molestie vero at et sit takimata dolor clita lorem sed at magna lorem magna no labore possim magna sea amet takimata sadipscing dolore at stet no at sit consetetur labore justo at vero blandit amet in sed magna at vero at dolor clita invidunt soluta vel dolor et lorem in vero feugiat et facer facilisi stet in amet takimata tempor et tincidunt et kasd nonummy ea vero aliquyam est dolor sadipscing</p>
+    <p>Vel dolor dolores magna molestie vero at et sit takimata dolor clita lorem sed at magna lorem magna no labore possim magna sea amet takimata sadipscing dolore at stet no at sit consetetur labore justo at vero blandit amet in sed magna at vero at dolor clita invidunt soluta vel dolor et lorem in vero feugiat et facer facilisi stet in amet takimata tempor et tincidunt et kasd nonummy ea vero aliquyam est dolor sadipscing</p>
+    <p>Vel dolor dolores magna molestie vero at et sit takimata dolor clita lorem sed at magna lorem magna no labore possim magna sea amet takimata sadipscing dolore at stet no at sit consetetur labore justo at vero blandit amet in sed magna at vero at dolor clita invidunt soluta vel dolor et lorem in vero feugiat et facer facilisi stet in amet takimata tempor et tincidunt et kasd nonummy ea vero aliquyam est dolor sadipscing</p>
+    <p>Vel dolor dolores magna molestie vero at et sit takimata dolor clita lorem sed at magna lorem magna no labore possim magna sea amet takimata sadipscing dolore at stet no at sit consetetur labore justo at vero blandit amet in sed magna at vero at dolor clita invidunt soluta vel dolor et lorem in vero feugiat et facer facilisi stet in amet takimata tempor et tincidunt et kasd nonummy ea vero aliquyam est dolor sadipscing</p>
+    <p>Vel dolor dolores magna molestie vero at et sit takimata dolor clita lorem sed at magna lorem magna no labore possim magna sea amet takimata sadipscing dolore at stet no at sit consetetur labore justo at vero blandit amet in sed magna at vero at dolor clita invidunt soluta vel dolor et lorem in vero feugiat et facer facilisi stet in amet takimata tempor et tincidunt et kasd nonummy ea vero aliquyam est dolor sadipscing</p>
+
+}
+
+@section Scripts{
+    <script>
+        setTimeout(function () {
+            var pres = document.querySelectorAll("pre>code");
+            for (var i = 0; i < pres.length; i++) {
+                hljs.highlightBlock(pres[i]);
+            }
+        });
+
+    </script>
+}

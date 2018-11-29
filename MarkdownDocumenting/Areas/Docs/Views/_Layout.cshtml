@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+@using MarkdownDocumenting;
+@using MarkdownDocumenting.Extensions;
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+
+    @*<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css">*@
+    <link rel="stylesheet" href="@Configuration.HighlightJS">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="@Configuration.GetMdlStyle">
+    <link rel="stylesheet" href="https://enisnecipoglu.com/Plugins/mdl-documentation.css">
+
+    @RenderSection("Styles", false)
+</head>
+<body>
+
+
+    <!-- Your content goes here -->
+    <div class="mdl-layout__container has-scrolling-header">
+        <!-- Overlay for fixed sidebar -->
+        <div class="demo-layout mdl-layout mdl-layout--fixed-header mdl-js-layout mdl-color--grey-100 is-upgraded" data-upgraded=",MaterialLayout">
+
+            <!-- Uses a header that scrolls with the text, rather than staying
+            locked at the top -->
+            <div class="mdl-layout mdl-js-layout">
+                <header class="mdl-layout__header mdl-layout__header--scroll">
+                    <div class="mdl-layout__header-row">
+                        <!-- Title -->
+                        <span class="mdl-layout-title">@ViewBag.Title</span>
+                        <!-- Add spacer, to align navigation to the right -->
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                </header>
+                <div class="mdl-layout__drawer">
+                    @*<span class="mdl-layout-title">@ViewBag.Title</span>*@
+                    <nav class="mdl-navigation">
+                        @foreach (var item in MarkdownDocumenting.Areas.Docs.Helpers.DocumentationHelper.GetMenu().ToList())
+                        {
+                            if (item.IsFolder)
+                            {
+                                <hr />
+                                <h6 class="mdl-layout-title mdl-navigation__link">@item.Name</h6>
+                                @foreach (var subItem in item.SubDocumentations)
+                                {
+                                    <a class="mdl-navigation__link @subItem.IsActive()" href="/Docs/@item.Name/@subItem">@subItem</a>
+                                }
+                                <hr />
+                            }
+                            else
+                            {
+                                <a class="mdl-navigation__link @item.IsActive()" href="/Docs/@item.Name">@item.Name</a>
+                            }
+                        }
+                        <hr />
+                        @foreach (var item in Configuration.CustomLinks)
+                        {
+                            <a class="mdl-navigation__link" href="@item.Url">@item.Display</a>
+                        }
+                    </nav>
+                </div>
+                <main class="mdl-layout__content">
+                    <div class="page-content">
+
+
+                        <!-- Your content goes here -->
+                        <div class="demo-ribbon mdl-color--primary"></div>
+                        <main class="demo-main mdl-layout__content" style="width: 100%;">
+                            <div class="demo-container mdl-grid">
+                                <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+                                <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                            <footer class="demo-footer mdl-mini-footer">
+                                <div class="mdl-mini-footer--left-section">
+                                    <ul class="mdl-mini-footer--link-list">
+                                        <li><a href="#">Help</a></li>
+                                        <li><a href="#">Privacy and Terms</a></li>
+                                        <li><a href="#">User Agreement</a></li>
+                                    </ul>
+                                </div>
+                            </footer>
+                        </main>
+
+
+
+                    </div>
+                </main>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    @*<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>*@
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>
