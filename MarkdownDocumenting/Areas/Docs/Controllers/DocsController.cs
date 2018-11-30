@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MarkdownDocumenting.Areas.Docs.Controllers
 {
     [Route("[controller]")]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class DocsController : Controller
     {
         const string VIEW_INDEX = "/Areas/Docs/Views/Docs/Index.cshtml";

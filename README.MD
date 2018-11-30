@@ -7,7 +7,7 @@ This project provides markdown documentation for your .net core projects automat
 
 <hr />
 
-# Hot does it work ?
+# How does it work ?
 
 It's easy. Just place your markdown documents under Docs folder and go **/Docs** path in your project.
 

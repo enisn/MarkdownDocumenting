@@ -10,27 +10,29 @@ namespace MarkdownDocumenting.Areas.Docs.Helpers
 {
     public class DocumentationHelper
     {
-        static string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Docs");
+        static string path = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "Docs");
         public static IEnumerable<DocumentationItem> GetMenu()
         {
-
-            foreach (var folder in Directory.GetDirectories(path))
+            if (Directory.Exists(path))
             {
-                yield return new DocumentationItem
+                foreach (var folder in Directory.GetDirectories(path))
                 {
-                    IsFolder = true,
-                    Name = GetFriendlyName(folder),
-                    SubDocumentations = Directory.GetFiles(Path.Combine(path, folder)).Where(x => x.EndsWith(".md")).Select(GetFriendlyName).ToList(),
-                };
-            }
+                    yield return new DocumentationItem
+                    {
+                        IsFolder = true,
+                        Name = GetFriendlyName(folder),
+                        SubDocumentations = Directory.GetFiles(Path.Combine(path, folder)).Where(x => x.EndsWith(".md")).Select(GetFriendlyName).ToList(),
+                    };
+                }
 
-            foreach (var doc in Directory.EnumerateFiles(path).Where(x => x.EndsWith(".md")))
-            {
-                yield return new DocumentationItem
+                foreach (var doc in Directory.EnumerateFiles(path).Where(x => x.EndsWith(".md")))
                 {
-                    IsFolder = false,
-                    Name = GetFriendlyName(doc)
-                };
+                    yield return new DocumentationItem
+                    {
+                        IsFolder = false,
+                        Name = GetFriendlyName(doc)
+                    };
+                }
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using Markdig;
 using Markdig.Extensions.AutoIdentifiers;
+using Markdig.Extensions.Tables;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,7 +31,10 @@ namespace MarkdownDocumenting.Extensions
                 config.ConfigureMarkdigPipeline = builder =>
                 {
                     builder.UseEmphasisExtras(Markdig.Extensions.EmphasisExtras.EmphasisExtraOptions.Default)
-                        .UsePipeTables()
+                        .UsePipeTables(new PipeTableOptions
+                        {
+                            RequireHeaderSeparator = true
+                        })
                         .UseGridTables()
                         .UseAutoIdentifiers(AutoIdentifierOptions.GitHub) 
                         .UseAutoLinks() 
