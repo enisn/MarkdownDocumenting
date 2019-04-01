@@ -19,7 +19,7 @@ namespace MarkdownDocumenting.Extensions
             Configuration.CustomLinks.Add(item);
             return app;
         }
-        public static IApplicationBuilder UseDocumentation(this IApplicationBuilder app, CustomLink item)
+        public static IApplicationBuilder UseDocumentation(this IApplicationBuilder app)
         {
             return app;
         }

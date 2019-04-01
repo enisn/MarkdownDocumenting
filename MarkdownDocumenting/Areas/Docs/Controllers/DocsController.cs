@@ -18,7 +18,7 @@ namespace MarkdownDocumenting.Areas.Docs.Controllers
         [HttpGet("/")]
         public IActionResult Index()
         {
-            return View(VIEW_INDEX);
+            return View(VIEW_INDEX, Configuration.IndexDocument ?? DocumentationHelper.GetContent("README") ?? DocumentationHelper.GetContent("readme"));
         }
         [HttpGet("{folder}/{file}")]
         public IActionResult Index(string folder, string file)
