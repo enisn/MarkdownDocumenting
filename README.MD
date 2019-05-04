@@ -58,7 +58,7 @@ It's easy. Just place your markdown documents under Docs folder and go **/Docs**
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
         //...
-        app.UseDocumentation(); // < --- Add this for default configuretion.
+        app.UseDocumentation(); // < --- Add this for default configuration.
         //...
     }
 ```
