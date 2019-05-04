@@ -14,11 +14,12 @@ namespace MarkdownDocumenting.Areas.Docs.Controllers
     {
         const string VIEW_INDEX = "/Areas/Docs/Views/Docs/Index.cshtml";
 
-
         [HttpGet("/")]
+        [HttpGet("/Docs")]
         public IActionResult Index()
         {
-            return View(VIEW_INDEX, Configuration.IndexDocument ?? DocumentationHelper.GetContent("README") ?? DocumentationHelper.GetContent("readme"));
+            ViewData["Title"] = DocumentingConfig.Current.IndexDocument ?? "README";
+            return View(VIEW_INDEX, DocumentingConfig.Current.IndexDocument ?? DocumentationHelper.GetContent("README") ?? DocumentationHelper.GetContent("readme"));
         }
         [HttpGet("{folder}/{file}")]
         public IActionResult Index(string folder, string file)
