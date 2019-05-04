@@ -11,7 +11,7 @@
 </blockquote>
 <p>This project provides markdown documentation for your .net core projects automaticly.</p>
 <hr />
-<h1 id="hot-does-it-work">Hot does it work ?</h1>
+<h1 id="how-does-it-work">How does it work ?</h1>
 <p>It's easy. Just place your markdown documents under Docs folder and go <strong>/Docs</strong> path in your project.</p>
 <table> 
 <tr>
@@ -22,45 +22,75 @@
 <hr />
 <h1 id="how-to-start-using">How to start using ?</h1>
 <ul>
-<li><p>Install NuGet package.</p>
+<li><p>Install <a href="https://www.nuget.org/packages/AspNetCore.MarkdownDocumenting/">NuGet package</a>.</p>
 </li>
 <li><p>Create a folder into your project root which name is <code>Docs</code>. And put your <strong>Markdown</strong> files under it. You can use Sub Folders to group them.</p>
 </li>
 <li><p>You must set your <strong>.md</strong> files <code>Copy To Output Directory</code> as <code>Copy Always</code>. <em>To do this. Right click the markdown file and go Properties, then you'll see that option. Just change it.</em></p>
 </li>
-<li><p>Go to <code>Startup.cs</code> and add following coe to your ConfigureServices method:</p>
+<li><p>Go to <code>Startup.cs</code> and add following code to your ConfigureServices method:</p>
 </li>
 </ul>
 <pre><code class="language-csharp">
-        public void ConfigureServices(IServiceCollection services)
-        {
-            //...
-            services.AddDocumentation(); // &lt; --- add this into startup.cs
-            //...
-            services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
-        }
+    public void ConfigureServices(IServiceCollection services)
+    {
+        //...
+        services.AddDocumentation(); // &lt; --- add this into startup.cs
+        //...
+        services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
+    }
 
 </code></pre>
-<hr />
-<h3 id="optional-configurations">Optional Configurations:</h3>
 <ul>
-<li>Use <code>AddCustomLink();</code> to add menu items into Configure() method in Startup.cs.</li>
+<li>Go to <code>Startup.cs</code> and add following code to your Configure method:</li>
+</ul>
+<pre><code class="language-csharp">    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        //...
+        app.UseDocumentation(); // &lt; --- Add this for default configuretion.
+        //...
+    }
+</code></pre>
+<hr />
+<h1 id="customization">Customization:</h1>
+<h3 id="custom-links">Custom Links</h3>
+<ul>
+<li>To Change Index Document</li>
+</ul>
+<pre><code class="language-csharp">    app.UseDocumentation(builder =&gt;
+    {
+        // this makes ~/Docs/Welcome.md file as your landing page at &quot;/&quot; and &quot;/Docs&quot;
+        builder.SetIndexDocument(&quot;Welcome.md&quot;);   
+    });
+</code></pre>
+<ul>
+<li>Use <code>AddCustomLink()</code> and <code>AddFooterLink()</code> to add menu items into UseDocumentation() method in Startup.cs.</li>
 </ul>
 <p>Example:</p>
-<pre><code class="language-csharp">
-        app.AddCustomLink(new CustomLink(&quot;Home&quot;,&quot;https://www.google.com&quot;));
-
+<pre><code class="language-csharp">    app.UseDocumentation(builder =&gt;
+    {
+        builder
+            // this adds link to footer
+            .AddFooterLink(new Elements.CustomLink(&quot;See on NuGet&quot;, &quot;https://www.nuget.org/packages/AspNetCore.MarkdownDocumenting/&quot;))
+            // this adds link to end of menu drawer.
+            .AddCustomLink(new Elements.CustomLink(&quot;Google&quot;,&quot;https://google.com1&quot;));
+    });
 </code></pre>
 <ul>
 <li>To Change Layout:</li>
 </ul>
-<pre><code class="language-csharp">            MarkdownDocumenting.Configuration.Layout = &quot;/Views/Shared/_Layout&quot;;
-
+<pre><code class="language-csharp">    app.UseDocumentation(builder =&gt;
+    {
+        builder.Layout = &quot;/Shared/_Layout&quot;;
+    });
 </code></pre>
 <ul>
 <li>To Change Highlight.js theme:</li>
 </ul>
-<pre><code class="language-csharp">            MarkdownDocumenting.Configuration.HighlightJS = &quot;http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css&quot;;
+<pre><code class="language-csharp">    app.UseDocumentation(builder =&gt;
+    {
+        builder.HighlightJS = &quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css&quot;;   
+    });
 </code></pre>
 
 

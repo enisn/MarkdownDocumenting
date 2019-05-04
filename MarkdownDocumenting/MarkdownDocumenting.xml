@@ -4,5 +4,35 @@
         <name>MarkdownDocumenting</name>
     </assembly>
     <members>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.Layout">
+            <summary>
+            You can set your custom layout. Default is: "/Areas/Docs/Views/_Layout.cshtml"
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.HighlightJS">
+            <summary>
+            You can change the code colorer javascript. You can visit here: https://highlightjs.org/
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.GetMdlStyle">
+            <summary>
+            You can change your material design color if you're using default layout. Visit here to get: https://getmdl.io/customize/index.html
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.IndexDocument">
+            <summary>
+            This is Full Path of index document.
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.CustomLinks">
+            <summary>
+            Custom links to be shown end of menu drawer if you're using default layout.
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.FooterMetaDatas">
+            <summary>
+            These will be displayed at bottom links
+            </summary>
+        </member>
     </members>
 </doc>

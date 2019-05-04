@@ -29,13 +29,17 @@ namespace MarkdownDocumenting.Web
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseDocumentation(builder =>
+            {
+                builder.SetIndexDocument("Welcome.md");
 
-            MarkdownDocumenting.Configuration.HighlightJS = "http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css";
-
-            app.AddCustomLink(new CustomLink("Home","https://www.google.com"));
+                
+                builder.Layout = "/Shared/_Layout";
+                builder.HighlightJS = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css";   
+            });
 
             app.UseMvcWithDefaultRoute();
-
         }
     }
 }
