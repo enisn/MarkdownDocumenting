@@ -27,6 +27,16 @@
 <li><p>Create a folder into your project root which name is <code>Docs</code>. And put your <strong>Markdown</strong> files under it. You can use Sub Folders to group them.</p>
 </li>
 <li><p>You must set your <strong>.md</strong> files <code>Copy To Output Directory</code> as <code>Copy Always</code>. <em>To do this. Right click the markdown file and go Properties, then you'll see that option. Just change it.</em></p>
+<ul>
+<li>Or you can add following code to your .csproj file in <code>&lt;Porject&gt;</code> tags to apply it all files in <code>/Docs</code> folder:
+<pre><code class="language-xml">    &lt;ItemGroup&gt;
+        &lt;None Update=&quot;Docs\**\*.md&quot;&gt;
+            &lt;CopyToOutputDirectory&gt;Always&lt;/CopyToOutputDirectory&gt;
+        &lt;/None&gt;
+     &lt;/ItemGroup&gt;
+</code></pre>
+</li>
+</ul>
 </li>
 <li><p>Go to <code>Startup.cs</code> and add following code to your ConfigureServices method:</p>
 </li>
