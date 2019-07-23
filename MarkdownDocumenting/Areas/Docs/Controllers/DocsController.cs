@@ -32,7 +32,7 @@ namespace MarkdownDocumenting.Areas.Docs.Controllers
         public IActionResult RootDoc(string file)
         {
             ViewData["Title"] = file;
-            return View(VIEW_INDEX, DocumentationHelper.GetContent(file));
+            return View(VIEW_INDEX, DocumentationHelper.GetContent(file) ?? DocumentationHelper.GetContent(file + "/README") ?? DocumentationHelper.GetContent(file + "/readme"));
         }
     }
 }
