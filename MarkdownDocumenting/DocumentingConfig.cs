@@ -55,8 +55,9 @@ namespace MarkdownDocumenting
         public string RoutePrefix { get; set; }
 
         /// <summary>
-        /// If this is true, root path ( "/" ) will be handled by MarkdownDocumenting and it'll display Docs/readme by default. If you set false, you'll need to go /Docs or /Docs/readme path to display documents
+        /// If this is true, root path ( "/" ) will be handled by MarkdownDocumenting and it'll display Docs/readme by default. If you set Redirect, all requests to root path ( "/" ) will be redirected to "/Docs" path.
+        /// If you add any Action with [HttpGet("/")] attribute, your action will be executed while using HandleWithHighOrder. Default Order is <see cref="int.MaxValue"/>
         /// </summary>
-        public bool HandleRootPath { get; set; } = true;
+        public HandlingType RootPathHandling { get; set; }
     }
 }

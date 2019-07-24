@@ -14,6 +14,7 @@ namespace MarkdownDocumenting.Areas.Docs.Controllers
     {
         const string VIEW_INDEX = "/Areas/Docs/Views/Docs/Index.cshtml";
 
+        [HttpGet("/", Order = int.MaxValue)]
         [HttpGet("/Docs")]
         public IActionResult Index()
         {

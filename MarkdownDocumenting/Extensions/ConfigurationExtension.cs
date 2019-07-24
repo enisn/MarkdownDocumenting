@@ -42,13 +42,24 @@ namespace MarkdownDocumenting.Extensions
             if (configAction != default)
                 configAction(DocumentingConfig.Current);
 
-            if (DocumentingConfig.Current.HandleRootPath)
-                app.UseRouter(opts => opts.MapRoute("DefaultMarkdownPage", "/", new { controller = "Docs", Action = "Index", }));
+            if (DocumentingConfig.Current.RootPathHandling == HandlingType.Redirect)
+            {
+                app.Use(AddRootRedirection);
+            }
 
-                //app.Map("/", cfg => cfg.Run(ctx => { ctx.Request.}));
-                //app.Map("/", cfg => cfg.Run(ctx => { ctx.Response.Redirect($"/{DocumentingConfig.Current.RoutePrefix}Docs/"); return Task.CompletedTask; }));
             return app;
         }
+
+        private static Task AddRootRedirection(HttpContext ctx, Func<Task> next)
+        {
+            if (ctx.Request.Path.Value == "/")
+	        {
+                ctx.Response.Redirect($"/{DocumentingConfig.Current.RoutePrefix}Docs/");
+                return Task.CompletedTask;
+	        }
+            return next();
+        }
+
         public static IServiceCollection AddDocumentation(this IServiceCollection services, Action<MarkdownPipelineBuilder> markdownPipelineBuilder = default, bool addHttpContextAccessor = true)
         {
             if (addHttpContextAccessor)
@@ -63,7 +74,7 @@ namespace MarkdownDocumenting.Extensions
                             RequireHeaderSeparator = true
                         })
                         .UseGridTables()
-                        .UseAutoIdentifiers(AutoIdentifierOptions.GitHub)
+                        .UseAutoIdentifiers(AutoIdentifierOptions.AutoLink)
                         .UseAutoLinks()
                         .UseAbbreviations()
                         .UseYamlFrontMatter()
