@@ -9,17 +9,17 @@ namespace MarkdownDocumenting.Extensions
 {
     public static class ViewExtensions
     {
-        public static string IsActive(this DocumentationItem item)
+        public static string IsActive(this DocumentationItem item, string activeClass = "active")
         {
-            return item.Name.IsActive();
+            return item.Name.IsActive(activeClass);
         }
-        public static string IsActive(this string item)
+        public static string IsActive(this string item, string activeClass = "active")
         {
             var routeData = new HttpContextAccessor().HttpContext.GetRouteData();
             if (routeData == null || routeData.Values["file"]?.ToString() != item)
                 return "";
 
-            return "mdl-color-text--accent";
+            return activeClass;
         }
     }
 }
