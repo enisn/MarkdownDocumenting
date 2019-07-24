@@ -43,13 +43,13 @@
                                 <h6 class="mdl-layout-title mdl-navigation__link">@item.Name</h6>
                                 @foreach (var subItem in item.SubDocumentations)
                                 {
-                                    <a class="mdl-navigation__link @subItem.IsActive()" href="/Docs/@item.Name/@subItem">@subItem</a>
+                                    <a class="mdl-navigation__link @subItem.IsActive("mdl-color-text--accent")" href="/@(DocumentingConfig.Current.RoutePrefix)Docs/@item.Name/@subItem">@subItem</a>
                                 }
                                 <hr />
                             }
                             else
                             {
-                                <a class="mdl-navigation__link @item.IsActive()" href="/Docs/@item.Name">@item.Name</a>
+                                <a class="mdl-navigation__link @item.IsActive("mdl-color-text--accent")" href="/@(DocumentingConfig.Current.RoutePrefix)Docs/@item.Name">@item.Name</a>
                             }
                         }
                         <hr />
