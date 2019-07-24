@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Westwind.AspNetCore.Markdown;
 
 namespace MarkdownDocumenting.Extensions
@@ -40,6 +41,12 @@ namespace MarkdownDocumenting.Extensions
         {
             if (configAction != default)
                 configAction(DocumentingConfig.Current);
+
+            if (DocumentingConfig.Current.HandleRootPath)
+                app.UseRouter(opts => opts.MapRoute("DefaultMarkdownPage", "/", new { controller = "Docs", Action = "Index", }));
+
+                //app.Map("/", cfg => cfg.Run(ctx => { ctx.Request.}));
+                //app.Map("/", cfg => cfg.Run(ctx => { ctx.Response.Redirect($"/{DocumentingConfig.Current.RoutePrefix}Docs/"); return Task.CompletedTask; }));
             return app;
         }
         public static IServiceCollection AddDocumentation(this IServiceCollection services, Action<MarkdownPipelineBuilder> markdownPipelineBuilder = default, bool addHttpContextAccessor = true)
@@ -47,7 +54,7 @@ namespace MarkdownDocumenting.Extensions
             if (addHttpContextAccessor)
                 services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
-            if(markdownPipelineBuilder == default)
+            if (markdownPipelineBuilder == default)
                 markdownPipelineBuilder = builder =>
                 {
                     builder.UseEmphasisExtras(Markdig.Extensions.EmphasisExtras.EmphasisExtraOptions.Default)
