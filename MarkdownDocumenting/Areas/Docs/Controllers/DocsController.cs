@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MarkdownDocumenting.Areas.Docs.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace MarkdownDocumenting.Areas.Docs.Controllers
 {
+    [AllowAnonymous]
     [Route("[controller]")]
     [ApiExplorerSettings(IgnoreApi = true)]
     public class DocsController : Controller
