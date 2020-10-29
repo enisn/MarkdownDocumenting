@@ -16,7 +16,7 @@
     <PackageReleaseNotes>Update dependencies for .Net 3.1</PackageReleaseNotes>
     <PackageId>AspNetCore.MarkdownDocumenting</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <!--<RazorGenerate>true</RazorGenerate>-->
+    <RazorGenerate>true</RazorGenerate>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
