@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
-  
+
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Version>2.1.0</Version>
@@ -16,7 +16,8 @@
     <PackageReleaseNotes>Update dependencies for .Net 3.1</PackageReleaseNotes>
     <PackageId>AspNetCore.MarkdownDocumenting</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RazorGenerate>true</RazorGenerate>
+    <!--<RazorGenerate>true</RazorGenerate>-->
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -29,7 +30,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Westwind.AspNetCore.Markdown" Version="3.4.5" />
   </ItemGroup>
 </Project>
