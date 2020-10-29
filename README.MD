@@ -1,9 +1,20 @@
-# Auto-Documentation
+﻿# Auto-Documentation
 
 >AspNetCore.MarkdownDocumenting
 
 This project provides markdown documentation for your .net core projects automaticly.
 
+<a href="https://www.nuget.org/packages/AspNetCore.MarkdownDocumenting">
+    <img src="https://img.shields.io/nuget/v/AspNetCore.MarkdownDocumenting?logo=nuget&style=flat-square" alt="NuGet" />
+</a>
+
+<a href="https://www.codefactor.io/repository/github/enisn/markdowndocumenting">
+    <img src="https://www.codefactor.io/repository/github/enisn/markdowndocumenting/badge" alt="CodeFactor" />
+</a>
+
+<a href="https://gitmoji.carloscuesta.me">
+  <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
+</a>
 
 <hr />
 
