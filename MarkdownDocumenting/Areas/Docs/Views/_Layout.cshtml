@@ -23,7 +23,7 @@
 
             <!-- Uses a header that scrolls with the text, rather than staying
             locked at the top -->
-            <div class="mdl-layout mdl-js-layout">
+            <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
                 <header class="mdl-layout__header mdl-layout__header--scroll">
                     <div class="mdl-layout__header-row">
                         <!-- Title -->
@@ -32,7 +32,7 @@
                         <div class="mdl-layout-spacer"></div>
                     </div>
                 </header>
-                <div class="mdl-layout__drawer">
+                <div class="mdl-layout__drawer" style="position: fixed;">
                     @*<span class="mdl-layout-title">@ViewBag.Title</span>*@
                     <nav class="mdl-navigation">
                         @foreach (var item in MarkdownDocumenting.Areas.Docs.Helpers.DocumentationHelper.GetMenu().ToList())
@@ -43,7 +43,7 @@
                                 <h6 class="mdl-layout-title mdl-navigation__link">@item.Name</h6>
                                 @foreach (var subItem in item.SubDocumentations)
                                 {
-                                    <a class="mdl-navigation__link @subItem.IsActive("mdl-color-text--accent")" href="/@(DocumentingConfig.Current.RoutePrefix)Docs/@item.Name/@subItem">@subItem</a>
+                    <a class="mdl-navigation__link @subItem.IsActive("mdl-color-text--accent")" href="/@(DocumentingConfig.Current.RoutePrefix)Docs/@item.Name/@subItem">&nbsp; &nbsp; &nbsp; &nbsp; @subItem</a>
                                 }
                             }
                             else
