@@ -43,7 +43,7 @@
                                 <h6 class="mdl-layout-title mdl-navigation__link">@item.Name</h6>
                                 @foreach (var subItem in item.SubDocumentations)
                                 {
-                    <a class="mdl-navigation__link @subItem.IsActive("mdl-color-text--accent")" href="/@(DocumentingConfig.Current.RoutePrefix)Docs/@item.Name/@subItem">&nbsp; &nbsp; &nbsp; &nbsp; @subItem</a>
+                                    <a class="mdl-navigation__link @subItem.IsActive("mdl-color-text--accent")" href="/@(DocumentingConfig.Current.RoutePrefix)Docs/@item.Name/@subItem">&nbsp; &nbsp; &nbsp; &nbsp; @subItem</a>
                                 }
                             }
                             else
@@ -68,8 +68,6 @@
                 <main class="mdl-layout__content">
                     <div class="page-content">
 
-
-                        <!-- Your content goes here -->
                         <div class="demo-ribbon mdl-color--primary"></div>
                         <main class="demo-main mdl-layout__content" style="width: 100%;">
                             <div class="demo-container mdl-grid">
@@ -78,27 +76,28 @@
                                     @RenderBody()
                                 </div>
                             </div>
-                            <footer class="demo-footer mdl-mini-footer">
-                                <div class="mdl-mini-footer--left-section">
-                                    <ul class="mdl-mini-footer--link-list">
-                                        @foreach (var item in MarkdownDocumenting.DocumentingConfig.Current.FooterMetaDatas)
-                                        {
-                                            if (item.OpenInNewWindow)
+
+                            @if (MarkdownDocumenting.DocumentingConfig.Current.FooterMetaDatas.Count > 0)
+                            {
+                                <footer class="demo-footer mdl-mini-footer">
+                                    <div class="mdl-mini-footer--left-section">
+                                        <ul class="mdl-mini-footer--link-list">
+                                            @foreach (var item in MarkdownDocumenting.DocumentingConfig.Current.FooterMetaDatas)
                                             {
-                                                <li><a target="_blank" href="@item.Url">@item.Display</a></li>
+                                                if (item.OpenInNewWindow)
+                                                {
+                                                    <li><a target="_blank" href="@item.Url">@item.Display</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li><a href="@item.Url">@item.Display</a></li>
+                                                }
                                             }
-                                            else
-                                            {
-                                                <li><a href="@item.Url">@item.Display</a></li>
-                                            }
-                                        }
-                                    </ul>
-                                </div>
-                            </footer>
+                                        </ul>
+                                    </div>
+                                </footer>
+                            }
                         </main>
-
-
-
                     </div>
                 </main>
             </div>
