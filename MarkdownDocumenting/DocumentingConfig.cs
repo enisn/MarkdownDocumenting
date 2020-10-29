@@ -18,7 +18,7 @@ namespace MarkdownDocumenting
         /// <summary>
         /// You can change the code colorer javascript. You can visit here: https://highlightjs.org/
         /// </summary>
-        [Obsolete("Use HighlighJsStyle instead of this.")]
+        [Obsolete("Use HighlighJsStyle instead of this.", true)]
         public string HighlightJS { get => HighlightJsStyle; set => HighlightJsStyle = value; }
 
         /// <summary>
