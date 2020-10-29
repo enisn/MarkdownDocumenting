@@ -47,7 +47,7 @@ namespace MarkdownDocumenting.Web
 
             app.UseDocumentation(builder =>
             {
-                builder.HighlightJS = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css";
+                builder.HighlightJsStyle = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css";
             });
 
             app.UseEndpoints(endpoints =>
