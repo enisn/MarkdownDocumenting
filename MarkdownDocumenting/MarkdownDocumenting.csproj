@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
   
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <Version>2.0.1</Version>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>2.1.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>enisn</Authors>
     <Company></Company>
@@ -13,7 +13,7 @@
     <PackageIconUrl>https://github.com/enisn/MarkdownDocumenting</PackageIconUrl>
     <RepositoryUrl>https://github.com/enisn/MarkdownDocumenting</RepositoryUrl>
     <PackageTags>markdown, documentation, aspnetcore,docs</PackageTags>
-    <PackageReleaseNotes>Update dependencies for .Net Core 3.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Update dependencies for .Net 3.1</PackageReleaseNotes>
     <PackageId>AspNetCore.MarkdownDocumenting</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RazorGenerate>true</RazorGenerate>
@@ -30,11 +30,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
-    <PackageReference Include="Westwind.AspNetCore.Markdown" Version="3.3.0" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Areas\Docs\Pages\" />
-    <Folder Include="Content\" />
+    <PackageReference Include="Westwind.AspNetCore.Markdown" Version="3.4.5" />
   </ItemGroup>
 </Project>
