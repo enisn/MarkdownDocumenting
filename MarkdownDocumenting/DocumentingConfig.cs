@@ -22,13 +22,14 @@ namespace MarkdownDocumenting
         public string HighlightJS { get => HighlightJsStyle; set => HighlightJsStyle = value; }
 
         /// <summary>
-        /// You can change the code colorer javascript. You can visit here: https://highlightjs.org/.
+        /// You can change the code colorer javascript. You can visit here: 'https://highlightjs.org/'.
         /// Default value is "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github-gist.min.css"
         /// </summary>
         public string HighlightJsStyle { get; set; } = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github-gist.min.css";
 
         /// <summary>
-        /// You can change your material design color if you're using default layout. Visit here to get: https://getmdl.io/customize/index.html
+        /// You can change your material design color if you're using default layout. Visit here to get: 'https://getmdl.io/customize/index.html'.
+        /// Default value is "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css".
         /// </summary>
         public string GetMdlStyle { get; set; } = "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css";
 
