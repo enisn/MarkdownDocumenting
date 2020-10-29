@@ -42,13 +42,12 @@ It's easy. Just place your markdown documents under Docs folder and go **/Docs**
     
 ```csharp
 
-    public void ConfigureServices(IServiceCollection services)
-    {
-        //...
-        services.AddDocumentation(); // < --- add this into startup.cs
-        //...
-        services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
-    }
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllersWithViews(); // <-- Must be added Views into IoC. Also '.AddMvc' can be used too.
+
+    services.AddDocumentation(); // Add this for default configuration.
+}
 
 ```
 
@@ -68,8 +67,6 @@ It's easy. Just place your markdown documents under Docs folder and go **/Docs**
 
 # Customization:
 
-### Custom Links
-
 - To Change Index Document
 
 ```csharp
@@ -79,6 +76,8 @@ It's easy. Just place your markdown documents under Docs folder and go **/Docs**
         builder.SetIndexDocument("Welcome.md");   
     });
 ```
+
+## Custom links
 
 - Use `AddCustomLink()` and `AddFooterLink()` to add menu items into UseDocumentation() method in Startup.cs.
 
@@ -91,11 +90,12 @@ It's easy. Just place your markdown documents under Docs folder and go **/Docs**
             // this adds link to footer
             .AddFooterLink(new Elements.CustomLink("See on NuGet", "https://www.nuget.org/packages/AspNetCore.MarkdownDocumenting/"))
             // this adds link to end of menu drawer.
-            .AddCustomLink(new Elements.CustomLink("Google","https://google.com1"));
+            .AddCustomLink(new Elements.CustomLink("Swagger UI","/swagger"));
     });
 ```
 
 
+## Theming
 
 - To Change Layout:
 
@@ -111,7 +111,16 @@ It's easy. Just place your markdown documents under Docs folder and go **/Docs**
 ```csharp
     app.UseDocumentation(builder =>
     {
-        builder.HighlightJS = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css";   
+        builder.HighlightJsStyle = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css";   
+    });
+```
+
+- To Change GetMdl theme:
+
+```csharp
+    app.UseDocumentation(builder =>
+    {
+        builder.GetMdlStyle = "https://code.getmdl.io/1.3.0/material.blue_grey-pink.min.css";   
     });
 ```
 

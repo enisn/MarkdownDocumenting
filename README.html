@@ -42,13 +42,12 @@
 </li>
 </ul>
 <pre><code class="language-csharp">
-    public void ConfigureServices(IServiceCollection services)
-    {
-        //...
-        services.AddDocumentation(); // &lt; --- add this into startup.cs
-        //...
-        services.AddMvc().SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_1);
-    }
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddControllersWithViews(); // &lt;-- Must be added Views into IoC. Also '.AddMvc' can be used too.
+
+    services.AddDocumentation(); // Add this for default configuration.
+}
 
 </code></pre>
 <ul>
@@ -63,7 +62,6 @@
 </code></pre>
 <hr />
 <h1 id="customization">Customization:</h1>
-<h3 id="custom-links">Custom Links</h3>
 <ul>
 <li>To Change Index Document</li>
 </ul>
@@ -73,6 +71,7 @@
         builder.SetIndexDocument(&quot;Welcome.md&quot;);   
     });
 </code></pre>
+<h2 id="custom-links">Custom links</h2>
 <ul>
 <li>Use <code>AddCustomLink()</code> and <code>AddFooterLink()</code> to add menu items into UseDocumentation() method in Startup.cs.</li>
 </ul>
@@ -83,9 +82,10 @@
             // this adds link to footer
             .AddFooterLink(new Elements.CustomLink(&quot;See on NuGet&quot;, &quot;https://www.nuget.org/packages/AspNetCore.MarkdownDocumenting/&quot;))
             // this adds link to end of menu drawer.
-            .AddCustomLink(new Elements.CustomLink(&quot;Google&quot;,&quot;https://google.com1&quot;));
+            .AddCustomLink(new Elements.CustomLink(&quot;Swagger UI&quot;,&quot;/swagger&quot;));
     });
 </code></pre>
+<h2 id="theming">Theming</h2>
 <ul>
 <li>To Change Layout:</li>
 </ul>
@@ -99,7 +99,15 @@
 </ul>
 <pre><code class="language-csharp">    app.UseDocumentation(builder =&gt;
     {
-        builder.HighlightJS = &quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css&quot;;   
+        builder.HighlightJsStyle = &quot;https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/vs2015.min.css&quot;;   
+    });
+</code></pre>
+<ul>
+<li>To Change GetMdl theme:</li>
+</ul>
+<pre><code class="language-csharp">    app.UseDocumentation(builder =&gt;
+    {
+        builder.GetMdlStyle = &quot;https://code.getmdl.io/1.3.0/material.blue_grey-pink.min.css&quot;;   
     });
 </code></pre>
 
