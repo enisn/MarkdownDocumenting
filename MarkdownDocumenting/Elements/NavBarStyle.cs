@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarkdownDocumenting.Extensions
+namespace MarkdownDocumenting.Elements
 {
-    public enum HandlingType
+    public enum NavBarStyle
     {
-        HandleWithHighOrder,
-        Handle,
-        Redirect,
+        Fixed,
+        Default,
+        Hidden
     }
 }

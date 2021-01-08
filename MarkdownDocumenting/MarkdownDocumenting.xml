@@ -9,20 +9,16 @@
             You can set your custom layout. Default is: "/Areas/Docs/Views/_Layout.cshtml"
             </summary>
         </member>
-        <member name="P:MarkdownDocumenting.DocumentingConfig.HighlightJS">
-            <summary>
-            You can change the code colorer javascript. You can visit here: https://highlightjs.org/
-            </summary>
-        </member>
         <member name="P:MarkdownDocumenting.DocumentingConfig.HighlightJsStyle">
             <summary>
-            You can change the code colorer javascript. You can visit here: https://highlightjs.org/.
+            You can change the code colorer javascript. You can visit here: 'https://highlightjs.org/'.
             Default value is "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github-gist.min.css"
             </summary>
         </member>
         <member name="P:MarkdownDocumenting.DocumentingConfig.GetMdlStyle">
             <summary>
-            You can change your material design color if you're using default layout. Visit here to get: https://getmdl.io/customize/index.html
+            You can change your material design color if you're using default layout. Visit here to get: 'https://getmdl.io/customize/index.html'.
+            Default value is "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css".
             </summary>
         </member>
         <member name="P:MarkdownDocumenting.DocumentingConfig.IndexDocument">
@@ -51,6 +47,11 @@
             <summary>
             If this is true, root path ( "/" ) will be handled by MarkdownDocumenting and it'll display Docs/readme by default. If you set Redirect, all requests to root path ( "/" ) will be redirected to "/Docs" path.
             If you add any Action with [HttpGet("/")] attribute, your action will be executed while using HandleWithHighOrder. Default Order is <see cref="F:System.Int32.MaxValue"/>
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.NavBarStyle">
+            <summary>
+            Gets or sets navbar style.
             </summary>
         </member>
     </members>

@@ -16,12 +16,6 @@ namespace MarkdownDocumenting
         public string Layout { get; set; } = "/Areas/Docs/Views/_Layout.cshtml";
 
         /// <summary>
-        /// You can change the code colorer javascript. You can visit here: https://highlightjs.org/
-        /// </summary>
-        [Obsolete("Use HighlighJsStyle instead of this.", true)]
-        public string HighlightJS { get => HighlightJsStyle; set => HighlightJsStyle = value; }
-
-        /// <summary>
         /// You can change the code colorer javascript. You can visit here: 'https://highlightjs.org/'.
         /// Default value is "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github-gist.min.css"
         /// </summary>
@@ -60,5 +54,10 @@ namespace MarkdownDocumenting
         /// If you add any Action with [HttpGet("/")] attribute, your action will be executed while using HandleWithHighOrder. Default Order is <see cref="int.MaxValue"/>
         /// </summary>
         public HandlingType RootPathHandling { get; set; }
+
+        /// <summary>
+        /// Gets or sets navbar style.
+        /// </summary>
+        public NavBarStyle NavBarStyle { get; set; }
     }
 }
