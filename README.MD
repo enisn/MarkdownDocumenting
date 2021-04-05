@@ -1,6 +1,5 @@
-﻿# Auto-Documentation
+# AspNetCore.MarkdownDocumenting
 
->AspNetCore.MarkdownDocumenting
 
 This project provides markdown documentation for your .net core projects automaticly.
 
