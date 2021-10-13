@@ -58,6 +58,6 @@ namespace MarkdownDocumenting
         /// <summary>
         /// Gets or sets navbar style.
         /// </summary>
-        public NavBarStyle NavBarStyle { get; set; }
+        public NavBarStyle NavBarStyle { get; set; } = NavBarStyle.Default;
     }
 }

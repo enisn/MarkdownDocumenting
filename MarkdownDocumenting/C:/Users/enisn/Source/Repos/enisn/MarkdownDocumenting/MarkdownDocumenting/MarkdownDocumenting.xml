@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MarkdownDocumenting</name>
+    </assembly>
+    <members>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.Layout">
+            <summary>
+            You can set your custom layout. Default is: "/Areas/Docs/Views/_Layout.cshtml"
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.HighlightJsStyle">
+            <summary>
+            You can change the code colorer javascript. You can visit here: 'https://highlightjs.org/'.
+            Default value is "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/github-gist.min.css"
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.GetMdlStyle">
+            <summary>
+            You can change your material design color if you're using default layout. Visit here to get: 'https://getmdl.io/customize/index.html'.
+            Default value is "https://code.getmdl.io/1.3.0/material.indigo-pink.min.css".
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.IndexDocument">
+            <summary>
+            This is Full Path of index document.
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.CustomLinks">
+            <summary>
+            Custom links to be shown end of menu drawer if you're using default layout.
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.FooterMetaDatas">
+            <summary>
+            These will be displayed at bottom links
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.RoutePrefix">
+            <summary>
+            Prefix to be used for routing. If you have an Gateway that uses routes with route parameter for your APIs, you may use this.
+            For Example, your root url is domain.com/myapi/  just set <see cref="P:MarkdownDocumenting.DocumentingConfig.RoutePrefix"/> as "myapi/". If not routing will be domain.com/Docs/readme, but after you set it will be domain.com/myapi/Docs/readme
+            Default is 'null'
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.RootPathHandling">
+            <summary>
+            If this is true, root path ( "/" ) will be handled by MarkdownDocumenting and it'll display Docs/readme by default. If you set Redirect, all requests to root path ( "/" ) will be redirected to "/Docs" path.
+            If you add any Action with [HttpGet("/")] attribute, your action will be executed while using HandleWithHighOrder. Default Order is <see cref="F:System.Int32.MaxValue"/>
+            </summary>
+        </member>
+        <member name="P:MarkdownDocumenting.DocumentingConfig.NavBarStyle">
+            <summary>
+            Gets or sets navbar style.
+            </summary>
+        </member>
+    </members>
+</doc>
