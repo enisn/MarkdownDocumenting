@@ -39,7 +39,7 @@ It's easy. Just place your markdown documents under Docs folder and go **/Docs**
 
 - You must set your **.md** files `Copy To Output Directory` as `Copy Always`. *To do this. Right click the markdown file and go Properties, then you'll see that option. Just change it.*
 
-    - Or you can add following code to your .csproj file in `<Porject>` tags to apply it all files in `/Docs` folder:
+    - Or you can add following code to your .csproj file in `<Project>` tags to apply it all files in `/Docs` folder:
         ```xml
             <ItemGroup>
                 <None Update="Docs\**\*.md">
